@@ -1,0 +1,50 @@
+/* -------- Currentcount -------- */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: white;
+}
+
+.current-count {
+  background-color: rgb(211, 211, 211);
+  padding: 20px;
+  width: 950px;
+  height: 600px;
+  border-radius: 8px;
+  text-align: center;
+  margin-right: 20px;
+}
+
+.current-title {
+  font-family: Arial, sans-serif;
+  font-size: 70px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.current-value {
+  font-family: Arial, sans-serif;
+  font-size: 300px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.other-counts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.count {
+  background-color: rgb(224, 222, 222);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 75px;
+  text-align: center;
+  width: 250px;
+  height: 144px;
+}

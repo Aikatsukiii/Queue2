@@ -1,0 +1,87 @@
+/* -------- Navbar  */
+.navbar-home {
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 50px 50px;
+  background-color: #478BD3;
+  color: white;
+}
+.navbar-titlehome {
+  Font: 24px sans-serif;
+  padding: 40px 35px;
+  font-size: 1.5em;
+}
+
+/* -------- Currentcount -------- */
+.container-wrapper {
+  display: flex;
+  gap: 80px;
+  justify-content: center;
+  align-items: center; 
+  padding: 0 100px;
+}
+
+.container {
+  display: flex;
+}
+
+.container .box1 {
+  height: 500px;
+  width: 500px;
+  margin: 50px;
+  background: rgb(190, 190, 190);
+  border: 1px solid #000000;
+  border-radius: 20px;
+}
+
+.container .box2 {
+  height: 500px;
+  width: 500%;
+  margin: 50px;
+  background: rgb(190, 190, 190);
+  border: 1px solid #000000;
+  border-radius: 20px;
+}
+
+.displayuno {
+  margin-top: 170px;
+  padding: 20px;
+  background-color: #ececec;
+  border-radius: 20px;
+  text-align: center;
+}
+.displaydos {
+  margin-top: 170px;
+  padding: 20px;
+  background-color: #ececec;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.current-title{
+  padding-top: 50px;
+  font-family: Arial;
+  font-size: 50px;
+  color: #000000;
+  text-align: center;
+}
+.current-title1 {
+  padding-top: 50px;
+  font-family: Arial;
+  font-size: 50px;
+  color: #000000;
+  text-align: center;
+}
+
+.current-value {
+  font-family: Arial;
+  font-size: 350px;
+  font-weight: 100;
+  text-align: center;
+}
+.current-value1 {
+  font-family: Arial;
+  font-size: 350px;
+  font-weight: 100;
+  text-align: center;
+}

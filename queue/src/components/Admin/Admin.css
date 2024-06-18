@@ -1,0 +1,91 @@
+/* Navbar */
+.navbar-admin {
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 50px 50px;
+  background-color: #478BD3;
+  color: white;
+}
+.navbar-titleadmin {
+  Font: 24px sans-serif;
+  padding: 40px 35px;
+  font-size: 1.5em;
+}
+/* Sidebar  */
+.sidebar-admin {
+  padding-top: 30px;
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  left: 0;
+  background-color: rgb(214, 212, 212);
+}
+.sidebar-admin ul {
+  list-style-type: none;
+}
+.sidebar-admin li {
+  margin: 3px 0px;
+  padding: 10px;
+}
+
+.sidebar-admin a { /* font*/
+  text-decoration: none;
+  font: 23px sans-serif;
+  margin: 0px 0px 6px;
+  padding: 0px 30px;
+  color: black;
+  display: block;
+  
+}
+
+.sidebar-admin a:hover {
+  width: auto;
+  height:auto;
+  padding: auto;
+  background-color: white;
+}
+/* Channel Button */
+.channel-button {
+  background-color: transparent;
+  border: none;
+  color: black;
+  text-decoration: none;
+  font: 23px sans-serif;
+  margin: 0px 0px 6px;
+  padding: 0px 14px 0px 16px;
+  display: block;
+  margin-bottom: 0px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  height: 50px;
+}
+
+.channel-button:hover {
+  border-radius: 5px;
+  width: 100%;
+
+  background-color: rgba(255, 255, 255, 0.897);
+}
+/* Account Button */
+.account-button {
+  background-color: transparent;
+  border: none;
+  color: black;
+  margin-bottom: px;
+  text-decoration: none;
+  font: 23px sans-serif;
+  margin: 0px 0px 6px;
+  padding: 0px 14px 0px 16px;
+  display: block;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  height: 50px;
+}
+
+.account-button:hover {
+  border-radius: 5px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.897);
+}

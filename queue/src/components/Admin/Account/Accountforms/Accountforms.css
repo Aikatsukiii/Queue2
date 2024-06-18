@@ -1,0 +1,51 @@
+.account-form {
+  width: 500px;
+  margin: 40px 380px auto;
+  padding: 20px;
+}
+
+.account-form h2 {
+  font-size: 35px;
+  font-family: Poppins;
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 3px;
+}
+
+.form-group label {
+  font-family: Arial;
+  font-size: 19px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  border: 0.5px solid #ccc;
+  border-radius: 3px;
+}
+
+.error {
+  color: red;
+  margin-bottom: 1px;
+  text-align: left;
+  font-family: sans-serif;
+  font-weight: bold;
+  background-color: white;
+}
+
+button.confirmaccount  {
+  width: 25%;
+  height: fit-content;
+  text-align: center;
+  margin-top: 3%;
+  padding: 15px;
+  color: rgb(255, 255, 255);
+  border: none; 
+  cursor: pointer;
+}
