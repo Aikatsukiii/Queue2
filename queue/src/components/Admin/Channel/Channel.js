@@ -18,10 +18,7 @@ const Channel = () => {
   const [newPrefix, setNewPrefix] = useState("");
 
   const handleReset = (index) => {
-    const newChannels = [...channels];
-    newChannels[index].name = "";
-    newChannels[index].count = "";
-    newChannels[index].prefix = "";
+    const newChannels = channels.filter((_, i) => i !== index);
     setChannels(newChannels);
   };
 
@@ -60,7 +57,7 @@ const Channel = () => {
     } else {
       setChannels([
         ...channels,
-        { name: newName, count: "", prefix: newPrefix },
+        { name: newName, count: newCount, prefix: newPrefix },
       ]);
     }
     closeModal();
