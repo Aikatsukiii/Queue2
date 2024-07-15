@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import "./Channel.css";
 
 Modal.setAppElement("#root");
 
 const Channel = () => {
-  const [channels, setChannels] = useState([
-    { name: "Juan Dela Cruz", count: "01", prefix: "A" },
-    { name: "Alex Johnson", count: "02", prefix: "B" },
-  ]);
+  const [channels, setChannels] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
 
@@ -17,10 +14,29 @@ const Channel = () => {
   const [newCount, setNewCount] = useState("");
   const [newPrefix, setNewPrefix] = useState("");
 
-  const handleReset = (index) => {
+  const handleRemoveFields = (index) => {
     const newChannels = channels.filter((_, i) => i !== index);
     setChannels(newChannels);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/channel');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const result = await response.json();
+        setChannels(result);
+      } catch (err) {
+        console.log(err.message);
+      } 
+
+    };
+
+    fetchData();
+  }, []);
+
 
   const openModal = (index) => {
     setIsEditMode(true);
@@ -112,7 +128,7 @@ const Channel = () => {
                 <td>{channel.prefix}</td>
                 <td>
                   <button
-                    onClick={() => handleReset(index)}
+                    onClick={() => handleRemoveFields(index)}
                     className="reset-button"
                   >
                     Reset
@@ -128,6 +144,8 @@ const Channel = () => {
             ))}
           </tbody>
         </table>
+
+        
         {/* ----- MODAL ----- */}
         <Modal
           isOpen={modalIsOpen}

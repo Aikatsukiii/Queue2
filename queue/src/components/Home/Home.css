@@ -1,4 +1,4 @@
-/* -------- Currentcount -------- */
+/* -------- Container -------- */
 .container {
   display: flex;
   align-items: center;
@@ -7,7 +7,8 @@
   background-color: white;
 }
 
-.current-count {
+/* -------- Current Count Section -------- */
+.currentcount {
   background-color: rgb(211, 211, 211);
   padding: 20px;
   width: 950px;
@@ -17,21 +18,22 @@
   margin-right: 20px;
 }
 
-.current-title {
+.currenttitle {
   font-family: Arial, sans-serif;
   font-size: 70px;
   color: #000000;
   margin-bottom: 10px;
 }
 
-.current-value {
+.currentvalue {
   font-family: Arial, sans-serif;
   font-size: 300px;
   font-weight: 700;
   color: #000000;
 }
 
-.other-counts {
+/* -------- Other Counts Section -------- */
+.othercounts {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
@@ -44,7 +46,6 @@
   text-align: center;
   font-family: Arial, sans-serif;
   font-size: 75px;
-  text-align: center;
   width: 250px;
   height: 144px;
 }

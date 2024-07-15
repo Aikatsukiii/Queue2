@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 
 const Home = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/queue');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const result = await response.json();
+        // Process or use result data as needed       
+      } catch (err) {
+        console.log(err.message);
+      } 
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="container">
-      <div className="current-count">
-        <div className="current-title">Current Count</div>
-        <div className="current-value">A-01</div>
+      <div className="currentcount">
+        <div className="currenttitle">Current Count</div>
+        <div className="currentvalue">A-01</div> {/* Example placeholder */}
       </div>
-      <div className="other-counts">
+      <div className="othercounts">
         <div className="count">B-11</div>
         <div className="count">C-21</div>
         <div className="count">D-31</div>
@@ -21,4 +38,5 @@ const Home = () => {
     </div>
   );
 }
+
 export default Home;
