@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Account.css";
 
 const Account = () => {
@@ -6,6 +7,7 @@ const Account = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,7 +19,10 @@ const Account = () => {
       console.log("Form submitted successfully:", { username, password });
     }
   };
-
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    navigate("/");
+  };
   return (
     // --------- Navbar ---------
     <div>
@@ -42,6 +47,13 @@ const Account = () => {
             >
               Account
             </button>
+          </li>
+          <li> 
+          <button 
+          className="logout-button" 
+          onClick={handleLogout}>
+          Logout
+        </button>
           </li>
         </ul>
       </div>

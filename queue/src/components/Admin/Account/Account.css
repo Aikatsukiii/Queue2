@@ -90,6 +90,29 @@
   width: 100%;
   background-color: rgba(255, 255, 255, 0.897);
 }
+
+.logout-button {
+  background-color: transparent;
+  border: none;
+  color: black;
+  margin-bottom: px;
+  text-decoration: none;
+  font: 23px sans-serif;
+  margin: 0px 0px 6px;
+  padding: 0px 14px 0px 16px;
+  display: block;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  height: 50px;
+}
+
+.logout-button:hover {
+  border-radius: 5px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.897);
+}
+
 /* -----------------------FORMLIST-----------------------*/
 .account-form {
   width: 500px;

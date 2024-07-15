@@ -8,7 +8,6 @@ import Account from './components/Admin/Account/Account';
 import Table from './components/Pages/Sample/Table';
 import Sample from "./components/Pages/Sample/Sample";
 import Modal from './components/Pages/Sample/Modal/Modal';
-import Currentcount from "./components/Home/Currentcount";
 import AccountForm from './components/Admin/Account/Accountforms/Accounforms';
 import "./index.css";
 
@@ -23,7 +22,6 @@ function App() {
         <Route path="/table" element={<Table />} />
         <Route path="/modal" element={<Modal />} />
         <Route path="/sample" element={<Sample />} />
-        <Route path="/currentcount" element={<Currentcount />} />
         <Route path="/accountforms" element={<AccountForm />} />
       </Routes>
     </BrowserRouter>

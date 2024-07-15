@@ -127,3 +127,10 @@ form .register-link {
 .register-link p a:hover {
     text-decoration: underline;
 }
+
+.error-message {
+    color: red; 
+    font-family: Arial;
+    text-align: center; 
+    margin-top: 10px;
+  }

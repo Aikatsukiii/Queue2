@@ -6,8 +6,7 @@ Modal.setAppElement("#root");
 
 const Table = () => {
   const [channels, setChannels] = useState([
-    { name: "Nixon Teruel", count: "01", prefix: "A" },
-    { name: "Steven Cayabyab ", count: "02", prefix: "B" },
+    { name: "", count: "", prefix: "" },
   ]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
