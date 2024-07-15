@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
+import { useNavigate } from "react-router-dom";
 import "./Channel.css";
 
 Modal.setAppElement("#root");
@@ -13,6 +14,8 @@ const Channel = () => {
   const [newName, setNewName] = useState("");
   const [newCount, setNewCount] = useState("");
   const [newPrefix, setNewPrefix] = useState("");
+  const navigate = useNavigate();
+
 
   const handleRemoveFields = (index) => {
     const newChannels = channels.filter((_, i) => i !== index);
@@ -22,7 +25,7 @@ const Channel = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/channel');
+        const response = await fetch('http://localhost:5000');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -79,13 +82,18 @@ const Channel = () => {
     closeModal();
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    navigate("/");
+  };
+
   return (
     <div>
-      {/* NAVBAR */}
+      {/* -------------------- NAVBAR -------------------- */}
       <nav className="navbar-channel">
         <div className="navbar-titlechannel">Queue Management System</div>
       </nav>
-      {/* SIDEBAR */}
+      {/*-------------------- SIDEBAR -------------------- */}
       <div className="sidebar-channel">
         <ul>
           <li>
@@ -104,9 +112,16 @@ const Channel = () => {
               Account
             </button>
           </li>
+          <li> 
+          <button 
+          className="logout-button" 
+          onClick={handleLogout}>
+          Logout
+        </button>
+          </li>
         </ul>
       </div>
-      {/* TABLE */}
+      {/*-------------------- TABLE --------------------*/}
       <div className="TableContainer">
         <button onClick={openAddModal} className="add-button">
           + Add
@@ -146,7 +161,7 @@ const Channel = () => {
         </table>
 
         
-        {/* ----- MODAL ----- */}
+        {/* -------------------- MODAL -------------------- */}
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
@@ -162,7 +177,7 @@ const Channel = () => {
             <input
               className="input-name"
               name="Channel-Name"
-              value={newName}
+              value={newName}ss
               onChange={(e) => setNewName(e.target.value)}
             />
           </div>

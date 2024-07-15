@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./Home.css";
 
 const Home = () => {
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -9,8 +10,7 @@ const Home = () => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const result = await response.json();
-        // Process or use result data as needed       
+        const result = await response.json();   
       } catch (err) {
         console.log(err.message);
       } 
@@ -23,7 +23,7 @@ const Home = () => {
     <div className="container">
       <div className="currentcount">
         <div className="currenttitle">Current Count</div>
-        <div className="currentvalue">A-01</div> {/* Example placeholder */}
+        <div className="currentvalue">A-01</div> {}
       </div>
       <div className="othercounts">
         <div className="count">B-11</div>
