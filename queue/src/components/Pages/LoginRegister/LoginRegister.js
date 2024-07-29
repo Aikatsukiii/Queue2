@@ -28,15 +28,18 @@ const LoginRegister = () => {
                 },
                 body: JSON.stringify(loginData)
             });
+
+            if (!response.ok) {
+                const errorResult = await response.json();
+                setErrorMessage(`Error: ${errorResult.message}`);
+                return;
+            }
+
             const result = await response.json();
-            if (response.ok) {
-                if (result.success) {
-                    navigate("/home");
-                } else {
-                    setErrorMessage('Invalid username or password');
-                }
+            if (result.success) {
+                navigate("/home");
             } else {
-                setErrorMessage(`Error: ${result.message}`);
+                setErrorMessage('Invalid username or password');
             }
         } catch (error) {
             console.error('Error:', error);
@@ -54,12 +57,15 @@ const LoginRegister = () => {
                 },
                 body: JSON.stringify(registerData)
             });
-            const result = await response.json();
-            if (response.ok) {
-                setErrorMessage(result.message);
-            } else {
-                setErrorMessage(`Error: ${result.message}`);
+
+            if (!response.ok) {
+                const errorResult = await response.json();
+                setErrorMessage(`Error: ${errorResult.message}`);
+                return;
             }
+
+            const result = await response.json();
+            setErrorMessage(result.message);
         } catch (error) {
             console.error('Error:', error);
             setErrorMessage(`An error occurred: ${error.message}`);

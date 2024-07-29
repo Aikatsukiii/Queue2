@@ -1,24 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Home.css";
 
 const Home = () => {
   
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/queue');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const result = await response.json();   
-      } catch (err) {
-        console.log(err.message);
-      } 
-    };
-
-    fetchData();
-  }, []);
-
   return (
     <div className="container">
       <div className="currentcount">

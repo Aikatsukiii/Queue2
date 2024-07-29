@@ -32,7 +32,7 @@
     transition: height .2 ease;
 }
 .wrapper.active {
-    height: 520px;
+    height: 450px;
 }
 .wrapper .form-box {
     width: 100%;

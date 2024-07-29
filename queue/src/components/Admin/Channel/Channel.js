@@ -9,23 +9,29 @@ const Channel = () => {
   const [channels, setChannels] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
-
   const [currentIndex, setCurrentIndex] = useState(null);
   const [newName, setNewName] = useState("");
   const [newCount, setNewCount] = useState("");
   const [newPrefix, setNewPrefix] = useState("");
   const navigate = useNavigate();
 
-
-  const handleRemoveFields = (index) => {
-    const newChannels = channels.filter((_, i) => i !== index);
-    setChannels(newChannels);
+  const handleRemoveFields = async (index) => {
+    const channel = channels[index];
+    try {
+      await fetch(`http://localhost:5000/channel/delete/${channel.id}`, {
+        method: 'DELETE'
+      });
+      const newChannels = channels.filter((_, i) => i !== index);
+      setChannels(newChannels);
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000');
+        const response = await fetch('http://localhost:5000/channel');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -33,13 +39,11 @@ const Channel = () => {
         setChannels(result);
       } catch (err) {
         console.log(err.message);
-      } 
-
+      }
     };
 
     fetchData();
   }, []);
-
 
   const openModal = (index) => {
     setIsEditMode(true);
@@ -66,18 +70,39 @@ const Channel = () => {
     setNewPrefix("");
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (isEditMode) {
-      const newChannels = [...channels];
-      newChannels[currentIndex].name = newName;
-      newChannels[currentIndex].count = newCount;
-      newChannels[currentIndex].prefix = newPrefix;
-      setChannels(newChannels);
+      const channel = channels[currentIndex];
+      try {
+        await fetch(`http://localhost:5000/channel/update/${channel.id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name: newName, count: newCount, prefix: newPrefix }),
+        });
+        const newChannels = [...channels];
+        newChannels[currentIndex].name = newName;
+        newChannels[currentIndex].count = newCount;
+        newChannels[currentIndex].prefix = newPrefix;
+        setChannels(newChannels);
+      } catch (err) {
+        console.error(err.message);
+      }
     } else {
-      setChannels([
-        ...channels,
-        { name: newName, count: newCount, prefix: newPrefix },
-      ]);
+      try {
+        const response = await fetch('http://localhost:5000/channel/create', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name: newName, count: newCount, prefix: newPrefix }),
+        });
+        const newChannel = await response.json();
+        setChannels([...channels, newChannel]);
+      } catch (err) {
+        console.error(err.message);
+      }
     }
     closeModal();
   };
@@ -113,11 +138,9 @@ const Channel = () => {
             </button>
           </li>
           <li> 
-          <button 
-          className="logout-button" 
-          onClick={handleLogout}>
-          Logout
-        </button>
+            <button className="logout-button" onClick={handleLogout}>
+              Logout
+            </button>
           </li>
         </ul>
       </div>
@@ -160,7 +183,6 @@ const Channel = () => {
           </tbody>
         </table>
 
-        
         {/* -------------------- MODAL -------------------- */}
         <Modal
           isOpen={modalIsOpen}
@@ -177,7 +199,7 @@ const Channel = () => {
             <input
               className="input-name"
               name="Channel-Name"
-              value={newName}ss
+              value={newName}
               onChange={(e) => setNewName(e.target.value)}
             />
           </div>
